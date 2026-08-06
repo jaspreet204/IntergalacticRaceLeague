@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="IntergalacticRaceLeague.BLL/IntergalacticRaceLeague.BLL.csproj" />
+  <Project Path="IntergalacticRaceLeague.DAL/IntergalacticRaceLeague.DAL.csproj" />
+  <Project Path="IntergalacticRaceLeague.Models/IntergalacticRaceLeague.Models.csproj" />
+  <Project Path="IntergalacticRaceLeague/IntergalacticRaceLeague.csproj" />
+</Solution>
