@@ -40,6 +40,16 @@ namespace IntergalacticRaceLeague
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+            app.MapControllerRoute(
+            name: "default",
+            pattern: "{controller=Home}/{action=Index}/{id?}");
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+
+                DbInitializer.SeedUsersAndRoles(services).Wait();
+            }
 
             app.Run();
         }
