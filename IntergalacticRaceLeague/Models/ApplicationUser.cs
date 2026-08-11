@@ -1,6 +1,9 @@
-﻿namespace IntergalacticRaceLeague.Models
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace IntergalacticRaceLeague.Models
 {
-    public class ApplicationUser
+    public class ApplicationUser : IdentityUser
     {
+        public string Name { get; set; } = "";
     }
 }
