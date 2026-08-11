@@ -22,4 +22,8 @@
     <ProjectReference Include="..\IntergalacticRaceLeague.Models\IntergalacticRaceLeague.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+
 </Project>

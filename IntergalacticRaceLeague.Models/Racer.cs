@@ -7,7 +7,7 @@
         public string Planet { get; set; } = "";
         public int Age { get; set; }
         public int VehicleId { get; set; }
-        public Vehicle Vehicle { get; set; }
+        public Vehicle Vehicle { get; set; } = null!;
         public List<RacerTournament> RacerTournaments { get; set; }
             = new List<RacerTournament>();
     }
