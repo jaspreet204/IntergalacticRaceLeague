@@ -3,53 +3,44 @@
 @{
     ViewData["Title"] = "Tournaments";
 }
-
 <h1>Tournaments</h1>
-
-<p>
-    @if (User.IsInRole("Admin"))
-    {
-        <a asp-action="Create" class="btn btn-primary">
-            Create New Tournament
-        </a>
-    }
-</p>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Location</th>
-            <th>Date</th>
-            <th>Status</th>
-            <th></th>
-        </tr>
-    </thead>
-
-    <tbody>
-        @foreach (var tournament in Model)
-        {
+        <p>
+            @if (User.IsInRole("Admin"))
+            {
+                <a asp-action="Create" class="btn btn-primary">
+                    Create New Tournament
+                </a>
+            }
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var tournament in Model)
+                {
             <tr>
                 <td>@tournament.Name</td>
                 <td>@tournament.Location</td>
                 <td>@tournament.TournamentDate.ToShortDateString()</td>
                 <td>@tournament.Status</td>
-
                 <td>
                     <a asp-action="Details"
                        asp-route-id="@tournament.Id">Details</a>
-
                     @if (User.IsInRole("Admin"))
                     {
                         <span> | </span>
-
                         <a asp-action="Edit"
                            asp-route-id="@tournament.Id">Edit</a>
-
                         <span> | </span>
-
                         <a asp-action="Delete"
-                           asp-route-id="@tournament.Id">Delete</a>
+                        asp-route-id="@tournament.Id">Delete</a>
                     }
                 </td>
             </tr>

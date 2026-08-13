@@ -20,8 +20,6 @@ namespace IntergalacticRaceLeague
                 .AddEntityFrameworkStores<RaceLeagueContext>()
                   
                   .AddDefaultTokenProviders();
-
-            // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddScoped<RacerRepository>();
             builder.Services.AddScoped<RacerService>();
@@ -41,24 +39,18 @@ namespace IntergalacticRaceLeague
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
-
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
-
             app.UseAuthentication();
             app.UseAuthorization();
-
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Welcome}/{id?}");
-          
 
             using (var scope = app.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
-
                 DbInitializer.SeedUsersAndRoles(services).Wait();
             }
             app.Run();

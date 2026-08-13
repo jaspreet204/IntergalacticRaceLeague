@@ -9,12 +9,10 @@ namespace IntergalacticRaceLeague.Controllers
     public class VehiclesController : Controller
     {
         private readonly VehicleService _vehicleService;
-
         public VehiclesController(VehicleService vehicleService)
         {
             _vehicleService = vehicleService;
         }
-
         public IActionResult Index()
         {
             var vehicles = _vehicleService.GetAll();

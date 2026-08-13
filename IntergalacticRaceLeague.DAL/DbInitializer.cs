@@ -10,9 +10,7 @@ namespace IntergalacticRaceLeague.DAL
         {
             var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
             var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
-
             string[] roles = { "Admin", "User" };
-
             foreach (var role in roles)
             {
                 if (!await roleManager.RoleExistsAsync(role))
@@ -20,10 +18,8 @@ namespace IntergalacticRaceLeague.DAL
                     await roleManager.CreateAsync(new IdentityRole(role));
                 }
             }
-
             var adminEmail = "admin@raceleague.com";
             var adminPassword = "Admin123!";
-
             var admin = await userManager.FindByEmailAsync(adminEmail);
 
             if (admin == null)
@@ -36,16 +32,13 @@ namespace IntergalacticRaceLeague.DAL
                 };
 
                 await userManager.CreateAsync(admin, adminPassword);
-              
             }
             if (!await userManager.IsInRoleAsync(admin, "Admin"))
             {
                 await userManager.AddToRoleAsync(admin, "Admin");
             }
-
             var userEmail = "user@raceleague.com";
             var userPassword = "User123!";
-
             var user = await userManager.FindByEmailAsync(userEmail);
 
             if (user == null)
@@ -56,7 +49,6 @@ namespace IntergalacticRaceLeague.DAL
                     Email = userEmail,
                     Name = "Standard User"
                 };
-
                 await userManager.CreateAsync(user, userPassword);
             }
             if (!await userManager.IsInRoleAsync(user, "User"))

@@ -3,9 +3,7 @@
 @{
     ViewData["Title"] = "Racers";
 }
-
 <h1>Racers</h1>
-
 <p>
     @if (User.Identity != null && User.Identity.IsAuthenticated)
     {
@@ -14,7 +12,6 @@
         </a>
     }
 </p>
-
 <table class="table">
     <thead>
         <tr>
@@ -25,7 +22,6 @@
             <th></th>
         </tr>
     </thead>
-
     <tbody>
         @foreach (var racer in Model)
         {
@@ -34,7 +30,6 @@
                 <td>@racer.Planet</td>
                 <td>@racer.Age</td>
                 <td>@racer.Vehicle?.Name</td>
-
                 <td>
                     <a asp-action="Details"
                        asp-route-id="@racer.Id">Details</a>
@@ -45,7 +40,6 @@
                         <a asp-action="Edit"
                            asp-route-id="@racer.Id">Edit</a>
                     }
-
                     @if (User.IsInRole("Admin"))
                     {
                         <span> | </span>

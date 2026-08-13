@@ -19,12 +19,10 @@ namespace IntergalacticRaceLeague.Controllers
             _vehicleService = vehicleService;
             _tournamentService = tournamentService;
         }
-
         public IActionResult Welcome()
         {
             return View();
         }
-
         public IActionResult Index()
         {
             DashboardViewModel model = new DashboardViewModel();

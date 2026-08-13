@@ -10,22 +10,17 @@
 
 <div>
     <p><strong>Name:</strong> @Model.Name</p>
-
     <p><strong>Planet:</strong> @Model.Planet</p>
-
     <p><strong>Age:</strong> @Model.Age</p>
 </div>
 
 <form asp-action="DeleteConfirmed" method="post">
 
     <input type="hidden" asp-for="Id" />
-
     <button type="submit" class="btn btn-danger">
         Delete
     </button>
-
     <a asp-action="Index" class="btn btn-secondary">
         Cancel
     </a>
-
 </form>

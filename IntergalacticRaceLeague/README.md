@@ -59,3 +59,9 @@ Main tables:
 - One Vehicle can have many Racers.
 - One Racer belongs to one Vehicle.
 - Racers and Tournaments have a many-to-many relationship through RacerTournament.
+
+## Delete Rules
+
+A Vehicle cannot be deleted if it is currently assigned to a Racer.
+A Racer cannot be deleted if the Racer is currently connected to a Tournament.
+The related record must be removed first before deleting the Vehicle or Racer.

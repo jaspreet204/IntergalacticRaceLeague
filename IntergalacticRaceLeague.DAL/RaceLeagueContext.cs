@@ -31,8 +31,6 @@ namespace IntergalacticRaceLeague.DAL
             modelBuilder.Entity<RacerTournament>()
                 .HasKey(rt => new { rt.RacerId, rt.TournamentId });
 
-
-            // Racer Properties
             modelBuilder.Entity<Racer>()
                 .Property(r => r.Name)
                 .IsRequired()
@@ -42,8 +40,6 @@ namespace IntergalacticRaceLeague.DAL
                 .Property(r => r.Planet)
                 .HasMaxLength(100);
 
-
-            // Vehicle Properties
             modelBuilder.Entity<Vehicle>()
                 .Property(v => v.Name)
                 .IsRequired()
@@ -53,8 +49,6 @@ namespace IntergalacticRaceLeague.DAL
                 .Property(v => v.Model)
                 .HasMaxLength(100);
 
-
-            // Tournament Properties
             modelBuilder.Entity<Tournament>()
                 .Property(t => t.Name)
                 .IsRequired()
@@ -69,23 +63,17 @@ namespace IntergalacticRaceLeague.DAL
                 .Property(t => t.Status)
                 .HasMaxLength(50);
 
-
-            // One Vehicle has many Racers
             modelBuilder.Entity<Racer>()
                 .HasOne(r => r.Vehicle)
                 .WithMany(v => v.Racers)
                 .HasForeignKey(r => r.VehicleId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-
-            // Racer and RacerTournament
             modelBuilder.Entity<RacerTournament>()
                 .HasOne(rt => rt.Racer)
                 .WithMany(r => r.RacerTournaments)
                 .HasForeignKey(rt => rt.RacerId);
 
-
-            // Tournament and RacerTournament
             modelBuilder.Entity<RacerTournament>()
                 .HasOne(rt => rt.Tournament)
                 .WithMany(t => t.RacerTournaments)

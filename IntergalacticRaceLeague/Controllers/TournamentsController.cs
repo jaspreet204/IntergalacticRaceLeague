@@ -8,7 +8,6 @@ namespace IntergalacticRaceLeague.Controllers
     public class TournamentsController : Controller
     {
         private readonly TournamentService _tournamentService;
-
         public TournamentsController(TournamentService tournamentService)
         {
             _tournamentService = tournamentService;
@@ -18,8 +17,6 @@ namespace IntergalacticRaceLeague.Controllers
             var tournaments = _tournamentService.GetAll();
             return View(tournaments);
         }
-
-      
         public IActionResult Details(int id)
         {
             var tournament = _tournamentService.GetById(id);
@@ -31,7 +28,6 @@ namespace IntergalacticRaceLeague.Controllers
 
             return View(tournament);
         }
-
         [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
@@ -95,7 +91,6 @@ namespace IntergalacticRaceLeague.Controllers
             {
                 _tournamentService.Delete(tournament);
             }
-
             return RedirectToAction("Index");
         }
     }

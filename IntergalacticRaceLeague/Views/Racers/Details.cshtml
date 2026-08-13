@@ -3,21 +3,16 @@
 @{
     ViewData["Title"] = "Racer Details";
 }
-
 <h1>Racer Details</h1>
 
 <div>
     <p><strong>Name:</strong> @Model.Name</p>
-
     <p><strong>Planet:</strong> @Model.Planet</p>
-
     <p><strong>Age:</strong> @Model.Age</p>
-
     <p><strong>Vehicle:</strong> @Model.Vehicle?.Name</p>
 </div>
 
 <a asp-action="Edit" asp-route-id="@Model.Id"
    class="btn btn-primary">Edit</a>
-
 <a asp-action="Index"
    class="btn btn-secondary">Back</a>
