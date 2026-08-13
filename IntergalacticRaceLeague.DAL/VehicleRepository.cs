@@ -30,7 +30,6 @@ namespace IntergalacticRaceLeague.DAL
 
         public void Update(Vehicle vehicle)
         {
-            _context.Vehicles.Update(vehicle);
             _context.SaveChanges();
         }
 

@@ -36,8 +36,13 @@ namespace IntergalacticRaceLeague.DAL
                 };
 
                 await userManager.CreateAsync(admin, adminPassword);
+              
+            }
+            if (!await userManager.IsInRoleAsync(admin, "Admin"))
+            {
                 await userManager.AddToRoleAsync(admin, "Admin");
             }
+
             var userEmail = "user@raceleague.com";
             var userPassword = "User123!";
 
@@ -53,6 +58,9 @@ namespace IntergalacticRaceLeague.DAL
                 };
 
                 await userManager.CreateAsync(user, userPassword);
+            }
+            if (!await userManager.IsInRoleAsync(user, "User"))
+            {
                 await userManager.AddToRoleAsync(user, "User");
             }
         }

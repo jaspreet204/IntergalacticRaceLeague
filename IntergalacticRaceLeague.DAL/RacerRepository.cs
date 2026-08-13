@@ -34,7 +34,6 @@ namespace IntergalacticRaceLeague.DAL
 
         public void Update(Racer racer)
         {
-            _context.Racers.Update(racer);
             _context.SaveChanges();
         }
 

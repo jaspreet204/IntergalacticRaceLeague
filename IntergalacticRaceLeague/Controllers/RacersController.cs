@@ -115,21 +115,14 @@ namespace IntergalacticRaceLeague.Controllers
                 return Forbid();
             }
 
-            racer.UserId = oldRacer.UserId;
+            oldRacer.Name = racer.Name;
+            oldRacer.Planet = racer.Planet;
+            oldRacer.Age = racer.Age;
+            oldRacer.VehicleId = racer.VehicleId;
 
-            if (ModelState.IsValid)
-            {
-                _racerService.Update(racer);
-                return RedirectToAction("Index");
-            }
+            _racerService.Update(oldRacer);
 
-            ViewBag.Vehicles = new SelectList(
-                _vehicleService.GetAll(),
-                "Id",
-                "Name",
-                racer.VehicleId);
-
-            return View(racer);
+            return RedirectToAction("Index");
         }
 
         [Authorize(Roles = "Admin")]

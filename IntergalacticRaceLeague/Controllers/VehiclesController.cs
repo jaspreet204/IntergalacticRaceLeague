@@ -92,13 +92,11 @@ namespace IntergalacticRaceLeague.Controllers
                 {
                     return Forbid();
                 }
+                    oldVehicle.Name = vehicle.Name;
+                    oldVehicle.Model = vehicle.Model;
+                    oldVehicle.TopSpeed = vehicle.TopSpeed;
 
-                vehicle.UserId = oldVehicle.UserId;
-                if (ModelState.IsValid)
-            {
-                _vehicleService.Update(vehicle);
-                return RedirectToAction("Index");
-            }
+            _vehicleService.Update(oldVehicle);
 
             return View(vehicle);
         }
