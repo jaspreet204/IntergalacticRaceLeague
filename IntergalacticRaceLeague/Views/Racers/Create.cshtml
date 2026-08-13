@@ -1,0 +1,44 @@
+﻿@model IntergalacticRaceLeague.Models.Racer
+
+@{
+    ViewData["Title"] = "Create Racer";
+}
+
+<h1>Create Racer</h1>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Planet" class="form-label"></label>
+        <input asp-for="Planet" class="form-control" />
+        <span asp-validation-for="Planet" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Age" class="form-label"></label>
+        <input asp-for="Age" class="form-control" />
+        <span asp-validation-for="Age" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="VehicleId" class="form-label">Vehicle</label>
+
+        <select asp-for="VehicleId"
+                asp-items="ViewBag.Vehicles"
+                class="form-control">
+            <option value="">Select Vehicle</option>
+        </select>
+
+        <span asp-validation-for="VehicleId"
+              class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+</form>

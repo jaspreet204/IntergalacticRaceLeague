@@ -1,0 +1,39 @@
+﻿@model IntergalacticRaceLeague.Models.Tournament
+
+@{
+    ViewData["Title"] = "Create Tournament";
+}
+
+<h1>Create Tournament</h1>
+
+<form asp-action="Create" method="post">
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Location" class="form-label"></label>
+        <input asp-for="Location" class="form-control" />
+        <span asp-validation-for="Location" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="TournamentDate" class="form-label">Tournament Date</label>
+        <input asp-for="TournamentDate" type="date" class="form-control" />
+        <span asp-validation-for="TournamentDate" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Status" class="form-label"></label>
+        <input asp-for="Status" class="form-control" />
+        <span asp-validation-for="Status" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+
+</form>

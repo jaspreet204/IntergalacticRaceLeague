@@ -1,0 +1,27 @@
+﻿@model IntergalacticRaceLeague.Models.Tournament
+
+@{
+    ViewData["Title"] = "Tournament Details";
+}
+
+<h1>Tournament Details</h1>
+
+<div>
+    <p><strong>Name:</strong> @Model.Name</p>
+
+    <p><strong>Location:</strong> @Model.Location</p>
+
+    <p>
+        <strong>Date:</strong>
+        @Model.TournamentDate.ToShortDateString()
+    </p>
+
+    <p><strong>Status:</strong> @Model.Status</p>
+</div>
+
+<a asp-action="Edit"
+   asp-route-id="@Model.Id"
+   class="btn btn-primary">Edit</a>
+
+<a asp-action="Index"
+   class="btn btn-secondary">Back</a>

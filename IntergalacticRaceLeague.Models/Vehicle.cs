@@ -6,6 +6,9 @@
         public string Name { get; set; } = "";
         public string Model { get; set; } = "";
         public int TopSpeed { get; set; }
+
+        public string UserId { get; set; } = "";
+
         public List<Racer> Racers { get; set; }
                 = new List<Racer>();
     }

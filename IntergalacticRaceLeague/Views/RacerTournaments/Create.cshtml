@@ -1,0 +1,43 @@
+﻿@model IntergalacticRaceLeague.Models.RacerTournament
+
+@{
+    ViewData["Title"] = "Join Tournament";
+}
+
+<h1>Join Tournament</h1>
+
+<form asp-action="Create" method="post">
+
+    <div class="mb-3">
+        <label asp-for="RacerId" class="form-label">Racer</label>
+
+        <select asp-for="RacerId"
+                asp-items="ViewBag.Racers"
+                class="form-control">
+            <option value="">Select Racer</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="TournamentId" class="form-label">Tournament</label>
+
+        <select asp-for="TournamentId"
+                asp-items="ViewBag.Tournaments"
+                class="form-control">
+            <option value="">Select Tournament</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Position" class="form-label"></label>
+        <input asp-for="Position" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="FinishTime" class="form-label"></label>
+        <input asp-for="FinishTime" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+
+</form>

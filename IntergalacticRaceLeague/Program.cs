@@ -1,4 +1,5 @@
 using IntergalacticRaceLeague.DAL;
+using IntergalacticRaceLeague.BLL;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using IntergalacticRaceLeague.Models;
@@ -16,11 +17,23 @@ namespace IntergalacticRaceLeague
                     builder.Configuration.GetConnectionString("DefaultConnection")));
 
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<RaceLeagueContext>();
+                .AddEntityFrameworkStores<RaceLeagueContext>()
+                  
+                  .AddDefaultTokenProviders();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddScoped<RacerRepository>();
+            builder.Services.AddScoped<RacerService>();
 
+            builder.Services.AddScoped<VehicleRepository>();
+            builder.Services.AddScoped<VehicleService>();
+
+            builder.Services.AddScoped<TournamentRepository>();
+            builder.Services.AddScoped<TournamentService>();
+
+            builder.Services.AddScoped<RacerTournamentRepository>();
+            builder.Services.AddScoped<RacerTournamentService>();
             var app = builder.Build();
 
             if (!app.Environment.IsDevelopment())
@@ -40,9 +53,7 @@ namespace IntergalacticRaceLeague
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
-            app.MapControllerRoute(
-            name: "default",
-            pattern: "{controller=Home}/{action=Index}/{id?}");
+          
 
             using (var scope = app.Services.CreateScope())
             {
@@ -50,7 +61,6 @@ namespace IntergalacticRaceLeague
 
                 DbInitializer.SeedUsersAndRoles(services).Wait();
             }
-
             app.Run();
         }
     }

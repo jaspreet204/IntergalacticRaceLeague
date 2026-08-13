@@ -1,0 +1,46 @@
+﻿@model IEnumerable<IntergalacticRaceLeague.Models.Racer>
+
+@{
+    ViewData["Title"] = "Racers";
+}
+
+<h1>Racers</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Racer</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Planet</th>
+            <th>Age</th>
+            <th>Vehicle</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var racer in Model)
+        {
+            <tr>
+                <td>@racer.Name</td>
+                <td>@racer.Planet</td>
+                <td>@racer.Age</td>
+                <td>@racer.Vehicle?.Name</td>
+
+                <td>
+                    <a asp-action="Details"
+                       asp-route-id="@racer.Id">Details</a> |
+
+                    <a asp-action="Edit"
+                       asp-route-id="@racer.Id">Edit</a> |
+
+                    <a asp-action="Delete"
+                       asp-route-id="@racer.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
