@@ -52,7 +52,7 @@ namespace IntergalacticRaceLeague
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Home}/{action=Welcome}/{id?}");
           
 
             using (var scope = app.Services.CreateScope())

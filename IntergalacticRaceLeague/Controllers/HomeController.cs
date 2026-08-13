@@ -20,6 +20,11 @@ namespace IntergalacticRaceLeague.Controllers
             _tournamentService = tournamentService;
         }
 
+        public IActionResult Welcome()
+        {
+            return View();
+        }
+
         public IActionResult Index()
         {
             DashboardViewModel model = new DashboardViewModel();

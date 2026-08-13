@@ -53,12 +53,14 @@ namespace IntergalacticRaceLeague.Controllers
         [HttpPost]
         public IActionResult Create(Racer racer)
         {
+            racer.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "";
+
+            ModelState.Remove("UserId");
+
             if (ModelState.IsValid)
             {
-
-                racer.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
                 _racerService.Add(racer);
+
                 return RedirectToAction("Index");
             }
 

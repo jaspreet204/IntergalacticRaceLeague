@@ -39,6 +39,9 @@ namespace IntergalacticRaceLeague.Controllers
         [HttpPost]
         public IActionResult Create(RacerTournament racerTournament)
         {
+            ModelState.Remove("Racer");
+            ModelState.Remove("Tournament");
+
             if (ModelState.IsValid)
             {
                 _racerTournamentService.Add(racerTournament);
