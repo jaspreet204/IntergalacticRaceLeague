@@ -19,12 +19,79 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
+
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark"
+                               asp-controller="Home"
+                               asp-action="Index">Home</a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark"
+                               asp-controller="Racers"
+                               asp-action="Index">Racers</a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark"
+                               asp-controller="Vehicles"
+                               asp-action="Index">Vehicles</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark"
+                               asp-controller="Tournaments"
+                               asp-action="Index">Tournaments</a>
+                        </li>
+
+                        @if (User.Identity != null && User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark"
+                                   asp-controller="RacerTournaments"
+                                   asp-action="Create">Join Tournament</a>
+                            </li>
+                        }
+
+                    </ul>
+                    <ul class="navbar-nav">
+
+                        @if (User.Identity != null && User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <span class="nav-link">
+                                    @User.Identity.Name
+                                </span>
+                            </li>
+
+                            <li class="nav-item">
+                                <form asp-controller="Account"
+                                      asp-action="Logout"
+                                      method="post">
+
+                                    <button type="submit"
+                                            class="btn btn-link nav-link">
+                                        Logout
+                                    </button>
+
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark"
+                                   asp-controller="Account"
+                                   asp-action="Login">Login</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark"
+                                   asp-controller="Account"
+                                   asp-action="Register">Register</a>
+                            </li>
+                        }
+
                     </ul>
                 </div>
             </div>
