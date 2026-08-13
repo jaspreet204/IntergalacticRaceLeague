@@ -1,8 +1,53 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IntergalacticRaceLeague.Models.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Home";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1>Intergalactic Race League</h1>
+    <p>Welcome to the Race League Management System</p>
+</div>
+
+<div class="row mt-4">
+
+    <div class="col-md-4">
+        <div class="card p-3">
+            <h3>Racers</h3>
+            <p>Total Racers: @Model.TotalRacers</p>
+
+            <a asp-controller="Racers"
+               asp-action="Index"
+               class="btn btn-primary">
+                View Racers
+            </a>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card p-3">
+            <h3>Vehicles</h3>
+            <p>Total Vehicles: @Model.TotalVehicles</p>
+
+            <a asp-controller="Vehicles"
+               asp-action="Index"
+               class="btn btn-primary">
+                View Vehicles
+            </a>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card p-3">
+            <h3>Tournaments</h3>
+            <p>Total Tournaments: @Model.TotalTournaments</p>
+
+            <a asp-controller="Tournaments"
+               asp-action="Index"
+               class="btn btn-primary">
+                View Tournaments
+            </a>
+        </div>
+    </div>
+
 </div>

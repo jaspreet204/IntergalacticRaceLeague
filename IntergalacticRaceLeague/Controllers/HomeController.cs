@@ -1,32 +1,34 @@
+using IntergalacticRaceLeague.BLL;
 using IntergalacticRaceLeague.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 
 namespace IntergalacticRaceLeague.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly RacerService _racerService;
+        private readonly VehicleService _vehicleService;
+        private readonly TournamentService _tournamentService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(
+            RacerService racerService,
+            VehicleService vehicleService,
+            TournamentService tournamentService)
         {
-            _logger = logger;
+            _racerService = racerService;
+            _vehicleService = vehicleService;
+            _tournamentService = tournamentService;
         }
 
         public IActionResult Index()
         {
-            return View();
-        }
+            DashboardViewModel model = new DashboardViewModel();
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+            model.TotalRacers = _racerService.GetAll().Count;
+            model.TotalVehicles = _vehicleService.GetAll().Count;
+            model.TotalTournaments = _tournamentService.GetAll().Count;
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(model);
         }
     }
 }
