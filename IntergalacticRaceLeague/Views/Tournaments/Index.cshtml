@@ -7,7 +7,12 @@
 <h1>Tournaments</h1>
 
 <p>
-    <a asp-action="Create" class="btn btn-primary">Create New Tournament</a>
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-action="Create" class="btn btn-primary">
+            Create New Tournament
+        </a>
+    }
 </p>
 
 <table class="table">
@@ -32,13 +37,20 @@
 
                 <td>
                     <a asp-action="Details"
-                       asp-route-id="@tournament.Id">Details</a> |
+                       asp-route-id="@tournament.Id">Details</a>
 
-                    <a asp-action="Edit"
-                       asp-route-id="@tournament.Id">Edit</a> |
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <span> | </span>
 
-                    <a asp-action="Delete"
-                       asp-route-id="@tournament.Id">Delete</a>
+                        <a asp-action="Edit"
+                           asp-route-id="@tournament.Id">Edit</a>
+
+                        <span> | </span>
+
+                        <a asp-action="Delete"
+                           asp-route-id="@tournament.Id">Delete</a>
+                    }
                 </td>
             </tr>
         }
