@@ -13,15 +13,13 @@ namespace IntergalacticRaceLeague.Controllers
         {
             _tournamentService = tournamentService;
         }
-
-        // Anyone can view tournaments
         public IActionResult Index()
         {
             var tournaments = _tournamentService.GetAll();
             return View(tournaments);
         }
 
-        // Anyone can view tournament details
+      
         public IActionResult Details(int id)
         {
             var tournament = _tournamentService.GetById(id);
@@ -34,14 +32,11 @@ namespace IntergalacticRaceLeague.Controllers
             return View(tournament);
         }
 
-        // Admin only
         [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
         }
-
-        // Admin only
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult Create(Tournament tournament)
@@ -54,8 +49,6 @@ namespace IntergalacticRaceLeague.Controllers
 
             return View(tournament);
         }
-
-        // Admin only
         [Authorize(Roles = "Admin")]
         public IActionResult Edit(int id)
         {
@@ -68,8 +61,6 @@ namespace IntergalacticRaceLeague.Controllers
 
             return View(tournament);
         }
-
-        // Admin only
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult Edit(Tournament tournament)
@@ -82,8 +73,6 @@ namespace IntergalacticRaceLeague.Controllers
 
             return View(tournament);
         }
-
-        // Admin only
         [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
@@ -96,8 +85,6 @@ namespace IntergalacticRaceLeague.Controllers
 
             return View(tournament);
         }
-
-        // Admin only
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult DeleteConfirmed(int id)
