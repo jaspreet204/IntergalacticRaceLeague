@@ -7,7 +7,12 @@
 <h1>Racers</h1>
 
 <p>
-    <a asp-action="Create" class="btn btn-primary">Create New Racer</a>
+    @if (User.Identity != null && User.Identity.IsAuthenticated)
+    {
+        <a asp-action="Create" class="btn btn-primary">
+            Create New Racer
+        </a>
+    }
 </p>
 
 <table class="table">
@@ -32,13 +37,21 @@
 
                 <td>
                     <a asp-action="Details"
-                       asp-route-id="@racer.Id">Details</a> |
+                       asp-route-id="@racer.Id">Details</a>
 
-                    <a asp-action="Edit"
-                       asp-route-id="@racer.Id">Edit</a> |
+                    @if (User.Identity != null && User.Identity.IsAuthenticated)
+                    {
+                        <span> | </span>
+                        <a asp-action="Edit"
+                           asp-route-id="@racer.Id">Edit</a>
+                    }
 
-                    <a asp-action="Delete"
-                       asp-route-id="@racer.Id">Delete</a>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <span> | </span>
+                        <a asp-action="Delete"
+                           asp-route-id="@racer.Id">Delete</a>
+                    }
                 </td>
             </tr>
         }
